@@ -9,6 +9,7 @@ import static ConexSQL.Conexion.getConeccion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -32,7 +33,7 @@ public class SignIn extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        User = new javax.swing.JTextField();
+        Usuario = new javax.swing.JTextField();
         access = new javax.swing.JButton();
         jPassword = new javax.swing.JPasswordField();
 
@@ -52,38 +53,35 @@ public class SignIn extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(access))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(User, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addComponent(jPassword))))
+                .addGap(97, 97, 97)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(jPassword))
                 .addContainerGap(103, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(access)
+                .addGap(138, 138, 138))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(55, 55, 55)
-                .addComponent(User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addComponent(access)
+                .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(access)
+                .addContainerGap(131, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void accessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accessActionPerformed
-        String User = this.User.getText();
+        String User = this.Usuario.getText();
         String pass = new String(jPassword.getPassword());
         
-        System.out.println("Usuario: " +User+"\nPassword: "+pass);
-        /*
         try {
             Connection con = null;
             con = getConeccion();
@@ -91,14 +89,26 @@ public class SignIn extends javax.swing.JFrame {
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT * FROM ");
+            ps = con.prepareStatement("SELECT nombre_usr FROM TBL_Usuario WHERE nombre_usr = ? and contrasenia = ?");
+            ps.setString(1, Usuario.getText());
+            ps.setString(2, new String(jPassword.getPassword()));
 
             res = ps.executeQuery();
+            
+            if (res.next()) {
+                JOptionPane.showMessageDialog(null, "Bienvenido");
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "Acceso Denegado");
+                Usuario.setText("");
+                jPassword.setText("");
+            }
+            
 
         } catch (Exception e) {
             System.out.println("Error: " +e);
         }
-        */
+        
 
 
     }//GEN-LAST:event_accessActionPerformed
@@ -139,7 +149,7 @@ public class SignIn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField User;
+    private javax.swing.JTextField Usuario;
     private javax.swing.JButton access;
     private javax.swing.JPasswordField jPassword;
     // End of variables declaration//GEN-END:variables
