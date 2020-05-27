@@ -16,12 +16,17 @@ import javax.swing.JOptionPane;
  * @author anmijurane <miguel.andres_sic@tesco.edu.mx>
  */
 public class SignIn extends javax.swing.JFrame {
-
+    static String Rol;
     /**
      * Creates new form SignIn
      */
     public SignIn() {
         initComponents();
+    }
+    
+    public SignIn(String Rol){
+        initComponents();
+        this.Rol = Rol;        
     }
 
     /**
@@ -39,6 +44,8 @@ public class SignIn extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        Usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         access.setText("INICIAR SESION");
         access.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -46,7 +53,7 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
 
-        jPassword.setText("jPasswordField1");
+        jPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,8 +86,6 @@ public class SignIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void accessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accessActionPerformed
-        String User = this.Usuario.getText();
-        String pass = new String(jPassword.getPassword());
         
         try {
             Connection con = null;
@@ -89,14 +94,15 @@ public class SignIn extends javax.swing.JFrame {
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT nombre_usr FROM TBL_Usuario WHERE nombre_usr = ? and contrasenia = ?");
+            ps = con.prepareStatement("SELECT nombre_usr FROM TBL_Usuario WHERE nombre_usr = ? and contrasenia = ? and id_rol = ?");
             ps.setString(1, Usuario.getText());
             ps.setString(2, new String(jPassword.getPassword()));
+            ps.setString(3, Rol);
 
             res = ps.executeQuery();
             
             if (res.next()) {
-                JOptionPane.showMessageDialog(null, "Bienvenido");
+                JOptionPane.showMessageDialog(null, "Bienvenido: " +res.getString("nombre_usr"));
                 
             }else{
                 JOptionPane.showMessageDialog(null, "Acceso Denegado");
@@ -104,13 +110,10 @@ public class SignIn extends javax.swing.JFrame {
                 jPassword.setText("");
             }
             
-
         } catch (Exception e) {
             System.out.println("Error: " +e);
         }
         
-
-
     }//GEN-LAST:event_accessActionPerformed
 
     /**
