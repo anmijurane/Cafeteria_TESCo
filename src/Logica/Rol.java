@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Logica;
 
 /**
@@ -16,7 +11,7 @@ public class Rol extends javax.swing.JFrame {
      */
     public Rol() {
         initComponents();
-    }
+    }       
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,21 +22,74 @@ public class Rol extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btn_Admon = new javax.swing.JButton();
+        btn_Cajero = new javax.swing.JButton();
+        btn_Supervisor = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btn_Admon.setText("ADMINISTRADOR");
+        btn_Admon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AdmonActionPerformed(evt);
+            }
+        });
+
+        btn_Cajero.setText("CAJERO");
+        btn_Cajero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CajeroActionPerformed(evt);
+            }
+        });
+
+        btn_Supervisor.setText("SUPERVISOR");
+        btn_Supervisor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_SupervisorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(163, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_Supervisor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Cajero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Admon, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(btn_Admon, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_Cajero, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_Supervisor, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_AdmonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AdmonActionPerformed
+        SignIn acc = new SignIn("101");
+        acc.setVisible(true);
+    }//GEN-LAST:event_btn_AdmonActionPerformed
+
+    private void btn_CajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CajeroActionPerformed
+        SignIn acc = new SignIn("102");
+        acc.setVisible(true);
+    }//GEN-LAST:event_btn_CajeroActionPerformed
+
+    private void btn_SupervisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SupervisorActionPerformed
+        SignIn acc = new SignIn("103");
+        acc.setVisible(true);
+    }//GEN-LAST:event_btn_SupervisorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +127,8 @@ public class Rol extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Admon;
+    private javax.swing.JButton btn_Cajero;
+    private javax.swing.JButton btn_Supervisor;
     // End of variables declaration//GEN-END:variables
 }
