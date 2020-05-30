@@ -41,46 +41,29 @@ public class SignIn extends javax.swing.JFrame {
         Usuario = new javax.swing.JTextField();
         access = new javax.swing.JButton();
         jPassword = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 380, 70));
 
+        access.setBackground(new java.awt.Color(153, 204, 0));
+        access.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         access.setText("INICIAR SESION");
         access.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 accessActionPerformed(evt);
             }
         });
+        getContentPane().add(access, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 590, 170, 70));
 
         jPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, 380, 80));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(jPassword))
-                .addContainerGap(103, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(access)
-                .addGap(138, 138, 138))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(access)
-                .addContainerGap(131, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/LOGIN.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 700));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -154,6 +137,7 @@ public class SignIn extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Usuario;
     private javax.swing.JButton access;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField jPassword;
     // End of variables declaration//GEN-END:variables
 }
