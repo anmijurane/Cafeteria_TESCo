@@ -17,6 +17,10 @@ public class Supervisor extends javax.swing.JFrame {
     public Supervisor() {
         initComponents();
     }
+    
+    public Supervisor(String name){
+        initComponents();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

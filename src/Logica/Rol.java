@@ -70,16 +70,19 @@ public class Rol extends javax.swing.JFrame {
     private void btn_AdmonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AdmonActionPerformed
         SignIn acc = new SignIn("101");
         acc.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_AdmonActionPerformed
 
     private void btn_CajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CajeroActionPerformed
         SignIn acc = new SignIn("102");
         acc.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_CajeroActionPerformed
 
     private void btn_SupervisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SupervisorActionPerformed
         SignIn acc = new SignIn("103");
         acc.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_SupervisorActionPerformed
 
     /**

@@ -39,6 +39,7 @@ public class SignIn extends javax.swing.JFrame {
     private void initComponents() {
 
         Usuario = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
         access = new javax.swing.JButton();
         jPassword = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
@@ -48,6 +49,16 @@ public class SignIn extends javax.swing.JFrame {
 
         Usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 380, 70));
+
+        btnBack.setBackground(new java.awt.Color(153, 204, 0));
+        btnBack.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        btnBack.setText("REGRESAR");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 170, 70));
 
         access.setBackground(new java.awt.Color(153, 204, 0));
         access.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
@@ -77,7 +88,7 @@ public class SignIn extends javax.swing.JFrame {
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT nombre_usr FROM TBL_Usuario WHERE nombre_usr = ? and contrasenia = ? and id_rol = ?");
+            ps = con.prepareStatement("SELECT nombre_usr FROM TBL_Usuario WHERE nombre_usr = ? and contrasenia = ? and password = ?");
             ps.setString(1, Usuario.getText());
             ps.setString(2, new String(jPassword.getPassword()));
             ps.setString(3, Rol);
@@ -86,7 +97,22 @@ public class SignIn extends javax.swing.JFrame {
             
             if (res.next()) {
                 JOptionPane.showMessageDialog(null, "Bienvenido: " +res.getString("nombre_usr"));
-                
+                if (null != Rol) switch (Rol) {                
+                    case "101": //Admon
+                        Administrador admon = new Administrador(res.getString("nombre_usr"));
+                        admon.setVisible(true);
+                        this.dispose();
+                        break;                
+                    case "102": //Cajero
+                        Cajero caj = new Cajero(res.getString("nombre_usr"));
+                        caj.setVisible(true);
+                        this.dispose();
+                        break;
+                    case "103": //Supervisor
+                        break;
+                    default:
+                        break;
+                }
             }else{
                 JOptionPane.showMessageDialog(null, "Acceso Denegado");
                 Usuario.setText("");
@@ -98,6 +124,12 @@ public class SignIn extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_accessActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        Rol back = new Rol();
+        back.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,6 +169,7 @@ public class SignIn extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Usuario;
     private javax.swing.JButton access;
+    private javax.swing.JButton btnBack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField jPassword;
     // End of variables declaration//GEN-END:variables
