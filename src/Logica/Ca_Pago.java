@@ -27,10 +27,28 @@ public class Ca_Pago extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Veinte = new javax.swing.JButton();
+        Cincuenta = new javax.swing.JButton();
+        Cien = new javax.swing.JButton();
+        Doscientos = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Veinte.setBackground(new java.awt.Color(235, 234, 188));
+        Veinte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/20.png"))); // NOI18N
+        getContentPane().add(Veinte, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 260, 130));
+
+        Cincuenta.setBackground(new java.awt.Color(235, 234, 188));
+        Cincuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/50.png"))); // NOI18N
+        getContentPane().add(Cincuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 290, 130));
+
+        Cien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/100.png"))); // NOI18N
+        getContentPane().add(Cien, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 290, 120));
+
+        Doscientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/200.png"))); // NOI18N
+        getContentPane().add(Doscientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 365, 300, 130));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/PAGO.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 700));
@@ -74,6 +92,10 @@ public class Ca_Pago extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Cien;
+    private javax.swing.JButton Cincuenta;
+    private javax.swing.JButton Doscientos;
+    private javax.swing.JButton Veinte;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
