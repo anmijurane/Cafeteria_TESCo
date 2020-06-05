@@ -50,7 +50,7 @@ public class SignIn extends javax.swing.JFrame {
         Usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 380, 70));
 
-        btnBack.setBackground(new java.awt.Color(153, 204, 0));
+        btnBack.setBackground(new java.awt.Color(123, 175, 77));
         btnBack.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         btnBack.setText("REGRESAR");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -58,9 +58,9 @@ public class SignIn extends javax.swing.JFrame {
                 btnBackActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 170, 70));
+        getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 650, 130, 40));
 
-        access.setBackground(new java.awt.Color(153, 204, 0));
+        access.setBackground(new java.awt.Color(123, 175, 77));
         access.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         access.setText("INICIAR SESION");
         access.addActionListener(new java.awt.event.ActionListener() {
