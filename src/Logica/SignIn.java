@@ -26,7 +26,8 @@ public class SignIn extends javax.swing.JFrame {
     
     public SignIn(String Rol){
         initComponents();
-        this.Rol = Rol;        
+        SignIn.Rol = Rol;
+        Usuario.requestFocus();
     }
 
     /**
@@ -47,6 +48,7 @@ public class SignIn extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Usuario.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         Usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 380, 70));
 
@@ -70,6 +72,7 @@ public class SignIn extends javax.swing.JFrame {
         });
         getContentPane().add(access, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 590, 170, 70));
 
+        jPassword.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, 380, 80));
 
@@ -88,7 +91,7 @@ public class SignIn extends javax.swing.JFrame {
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT nombre_usr FROM TBL_Usuario WHERE nombre_usr = ? and contrasenia = ? and password = ?");
+            ps = con.prepareStatement("SELECT nombre_usr FROM TBL_Usuario WHERE nombre_usr = ? and contrasenia = ? and id_rol = ?");
             ps.setString(1, Usuario.getText());
             ps.setString(2, new String(jPassword.getPassword()));
             ps.setString(3, Rol);
@@ -109,14 +112,18 @@ public class SignIn extends javax.swing.JFrame {
                         this.dispose();
                         break;
                     case "103": //Supervisor
+                        Supervisor superv = new Supervisor(res.getString("nombre_usr"));
+                        superv.setVisible(true);
+                        this.dispose();
                         break;
                     default:
                         break;
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "Acceso Denegado");
+                JOptionPane.showMessageDialog(null, "CREDENCIALES INCORRECTAS");
                 Usuario.setText("");
                 jPassword.setText("");
+                Usuario.requestFocus();
             }
             
         } catch (Exception e) {

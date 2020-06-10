@@ -10,7 +10,9 @@ package Logica;
  * @author Montzerrat Rivera
  */
 public class Supervisor extends javax.swing.JFrame {
-
+    
+    
+    
     /**
      * Creates new form Supervisor
      */

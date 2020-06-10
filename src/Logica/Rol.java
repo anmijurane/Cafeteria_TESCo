@@ -30,7 +30,7 @@ public class Rol extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_Admon.setBackground(new java.awt.Color(102, 204, 0));
+        btn_Admon.setBackground(new java.awt.Color(123, 175, 77));
         btn_Admon.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         btn_Admon.setText("ADMINISTRADOR");
         btn_Admon.addActionListener(new java.awt.event.ActionListener() {
@@ -40,7 +40,7 @@ public class Rol extends javax.swing.JFrame {
         });
         getContentPane().add(btn_Admon, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 310, 110));
 
-        btn_Cajero.setBackground(new java.awt.Color(102, 204, 0));
+        btn_Cajero.setBackground(new java.awt.Color(123, 175, 77));
         btn_Cajero.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         btn_Cajero.setText("CAJERO");
         btn_Cajero.addActionListener(new java.awt.event.ActionListener() {
@@ -50,7 +50,7 @@ public class Rol extends javax.swing.JFrame {
         });
         getContentPane().add(btn_Cajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, 310, 110));
 
-        btn_Supervisor.setBackground(new java.awt.Color(102, 204, 0));
+        btn_Supervisor.setBackground(new java.awt.Color(123, 175, 77));
         btn_Supervisor.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         btn_Supervisor.setText("SUPERVISOR");
         btn_Supervisor.addActionListener(new java.awt.event.ActionListener() {
@@ -61,7 +61,6 @@ public class Rol extends javax.swing.JFrame {
         getContentPane().add(btn_Supervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 460, 310, 110));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/rol.png"))); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(1000, 700));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 700));
 
         pack();
