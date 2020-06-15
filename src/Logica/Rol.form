@@ -28,7 +28,7 @@
     <Component class="javax.swing.JButton" name="btn_Admon">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="cc" red="66" type="rgb"/>
+          <Color blue="4d" green="af" red="7b" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Corbel" size="18" style="1"/>
@@ -47,7 +47,7 @@
     <Component class="javax.swing.JButton" name="btn_Cajero">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="cc" red="66" type="rgb"/>
+          <Color blue="4d" green="af" red="7b" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Corbel" size="18" style="1"/>
@@ -66,7 +66,7 @@
     <Component class="javax.swing.JButton" name="btn_Supervisor">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="cc" red="66" type="rgb"/>
+          <Color blue="4d" green="af" red="7b" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Corbel" size="18" style="1"/>
