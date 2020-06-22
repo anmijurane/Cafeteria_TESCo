@@ -51,8 +51,8 @@ public class proveedor {
         return nombreProv;
     }
 
-    public void setNombreProv(String nombreProv) {
-        this.nombreProv = nombreProv;
+    public void setNombreProv(String nombreProv) {        
+        this.nombreProv = nombreProv.toUpperCase();
     }
 
     public String getTelefono() {

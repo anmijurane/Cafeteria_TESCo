@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import poo.proveedor;
 
 /**
@@ -112,6 +113,7 @@ public class Ad_Inventario extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         prov = new proveedor(jtxNombre.getText(), jtxTelefono.getText());        
+        prov.setNombreProv(jtxNombre.getText());
         queryInsert(prov);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -121,15 +123,28 @@ public class Ad_Inventario extends javax.swing.JFrame {
         ResultSet rst;
         String scriptSQL = "INSERT INTO TBL_Proveedor (id_proveedor, "
                 + "nom_prove, telefono) VALUES (" + prv.toQuerySQL() + ")";
-
         System.out.println(scriptSQL);
-        /*try {
+        
+        try {
             con.setAutoCommit(false);
-            pst = con.prepareStatement("");
+            pst = con.prepareStatement(scriptSQL);
+            pst.executeUpdate();
+            
+            int value = JOptionPane.showConfirmDialog(this, "¿CONFIRMAS LOS DATOS? \n Proveedor: "
+                    +prv.getNombreProv()+"\nTelefono: "+prv.getTelefono(), "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+            System.out.println("Valor Joption"+value);
+            if (value == 0) {
+                    con.commit();
+                    JOptionPane.showMessageDialog(this, "Se agrego el proveedor: " + prv.getNombreProv() + " correctamente.");                    
+                } else if (value == 2) {
+                    JOptionPane.showMessageDialog(this, "No se agrego el proveedor");
+                    con.rollback();
+                }
+            
+            
         } catch (SQLException e) {
-            
-            
-        }*/
+            System.out.println("Error: " +e);            
+        }
     }
 
    /* public int getIdProveedor() {
