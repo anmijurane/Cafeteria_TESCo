@@ -12,31 +12,36 @@ import java.sql.SQLException;
  */
 public class proveedor {
     
-    private int idProveedor;
+    int idProveedor;
     private String nombreProv;
     private String telefono;    
 
-    public int getIdProveedor() {
-        int id = 0;
+    public proveedor(String nombreProv, String telefono) {
+        this.nombreProv = nombreProv;
+        this.telefono = telefono;
+    }
+
+    public int getIdProveedor() {        
         
         Connection con = getConeccion();
         PreparedStatement prepared;
         ResultSet result;
         
         try {
-            prepared = con.prepareStatement("SELECT max(id_proveedor) "
-                    + "FORM TBL_Proveedor");
-            result = prepared.executeQuery();
-            
-            if (result.next()) {
-                id = result.getInt("id_proveedor");
-            }
+        prepared = con.prepareStatement("SELECT max(id_proveedor) as UsuarioMaximo "
+        + "FROM TBL_Proveedor");
+        result = prepared.executeQuery();
+        
+        if (result.next()) {
+        idProveedor = result.getInt("UsuarioMaximo")+1;
+        System.out.println("idProveedor: " +idProveedor);
+        }
         } catch (SQLException e) {
+            System.out.println("ERROR getIdProveedor: " +e);
         }
         
         return idProveedor;
-    }
-    int id_Proveedor = getIdProveedor();
+    }    
 
     public void setIdProveedor(int idProveedor) {                
         this.idProveedor = idProveedor;
@@ -59,7 +64,7 @@ public class proveedor {
     }
     
     public String toQuerySQL(){
-        return ""+idProveedor+1+", \""+nombreProv+"\", \""+telefono+"\"";
+        return ""+getIdProveedor()+", \""+nombreProv+"\", \""+telefono+"\"";
     }
     
 }
