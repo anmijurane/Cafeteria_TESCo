@@ -182,16 +182,12 @@ public class Ad_Registro extends javax.swing.JFrame {
 
     private void btnAgregarUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarUserActionPerformed
         if (DataValid() || jtxPassword.getText().equals("")) {
-
             Connection Conect = getConeccion();
             PreparedStatement preparedStm;
             usr = new Usuario(idUsuario, jtxPassword.getText(), jtxName.getText(), 100 + cbx_Rol.getSelectedIndex(), 401);
-
             System.out.println("SQL: " + usr.toQuerySQL());
             String querySQLInsert = "INSERT INTO TBL_Usuario(id_usuario, nombre_usr, contrasenia, id_rol, id_area) VALUES (" + usr.toQuerySQL() + ")";
-
             System.out.println(querySQLInsert);
-
             try {
                 Conect.setAutoCommit(false);
                 preparedStm = Conect.prepareStatement(querySQLInsert);
