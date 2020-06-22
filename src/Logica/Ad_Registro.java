@@ -10,6 +10,7 @@ import java.awt.event.ItemEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import poo.Usuario;
 
@@ -19,14 +20,21 @@ import poo.Usuario;
  */
 public class Ad_Registro extends javax.swing.JFrame {
 
+    String contra;
+    int idUsr = 0;
     Usuario usr;
+    int idUsuario = getIDpass();
+
+    static Connection con = getConeccion();
+    static PreparedStatement ps;
+    static ResultSet res;
 
     /**
      * Creates new form Ad_Registro
      */
     public Ad_Registro() {
         initComponents();
-        jLID.setText("ID: " +getIDpass());
+        jLID.setText("ID: " + idUsuario);
     }
 
     /**
@@ -41,9 +49,9 @@ public class Ad_Registro extends javax.swing.JFrame {
         jLID = new javax.swing.JLabel();
         jtxName = new javax.swing.JTextField();
         cbx_Rol = new javax.swing.JComboBox<>();
-        jTextField2 = new javax.swing.JTextField();
+        jtxPassword = new javax.swing.JTextField();
         generarPass = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnAgregarUser = new javax.swing.JButton();
         areaSet = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,7 +69,7 @@ public class Ad_Registro extends javax.swing.JFrame {
             }
         });
 
-        jTextField2.setText("CONTRASEÑA");
+        jtxPassword.setText("CONTRASEÑA");
 
         generarPass.setText("GENERAR CONTRASEÑA");
         generarPass.addActionListener(new java.awt.event.ActionListener() {
@@ -70,10 +78,10 @@ public class Ad_Registro extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("ACEPTAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarUser.setText("ACEPTAR");
+        btnAgregarUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAgregarUserActionPerformed(evt);
             }
         });
 
@@ -90,12 +98,12 @@ public class Ad_Registro extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(generarPass, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtxPassword, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtxName, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(262, 262, 262)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnAgregarUser, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(64, 64, 64)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -114,12 +122,12 @@ public class Ad_Registro extends javax.swing.JFrame {
                     .addComponent(cbx_Rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField2)
+                    .addComponent(jtxPassword)
                     .addComponent(areaSet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(jButton1))
+                        .addComponent(btnAgregarUser))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(generarPass)))
@@ -156,21 +164,53 @@ public class Ad_Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_cbx_RolItemStateChanged
 
     public boolean DataValid() {
-        if (jtxName.getText().equals("") && cbx_Rol.getSelectedIndex() == 0) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(jtxName.getText().equals("") || cbx_Rol.getSelectedIndex() == 0);
     }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    public void Clear() {
+        jtxName.setText("");
+        jtxName.setText("");
+        cbx_Rol.setSelectedIndex(0);
+    }
 
+    private void btnAgregarUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarUserActionPerformed
+        Connection Conect = getConeccion();
+        PreparedStatement preparedStm;
+        usr = new Usuario(idUsuario, jtxPassword.getText(), jtxName.getText(), 100 + cbx_Rol.getSelectedIndex(), 401);
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+        System.out.println("SQL: " + usr.toQuerySQL());
+        String querySQLInsert = "INSERT INTO TBL_Usuario(id_usuario, nombre_usr, contrasenia, id_rol, id_area) VALUES (" + usr.toQuerySQL() + ")";
+        
+        System.out.println(querySQLInsert);
+
+        try {
+            Conect.setAutoCommit(false);
+            preparedStm = Conect.prepareStatement(querySQLInsert);
+            preparedStm.executeUpdate();
+
+            int value = JOptionPane.showConfirmDialog(this, "¿CONFIRMAS LOS DATOS?", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+            if (value == 0) {
+                Conect.commit();
+                JOptionPane.showMessageDialog(this, "Se agrego el usuario: " + usr.getNombreUsuario() + " correctamente.");
+                idUsuario++;
+                jLID.setText("ID: " + idUsuario);                
+            } else if (value == 1) {
+                Conect.rollback();
+                JOptionPane.showMessageDialog(this, "No se agrego al usuario");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error: " + e);
+        }
+
+    }//GEN-LAST:event_btnAgregarUserActionPerformed
 
     private void generarPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarPassActionPerformed
         if (DataValid()) {
-            usr.setContrasenia("");
+            contra = (idUsuario + "_" + jtxName.getText() + "@" + cbx_Rol.getSelectedIndex());
+            jtxPassword.setText(contra);
+        } else {
+            JOptionPane.showMessageDialog(this, "Ingresa datos para generar la contraseña");
         }
     }//GEN-LAST:event_generarPassActionPerformed
 
@@ -191,13 +231,17 @@ public class Ad_Registro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ad_Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ad_Registro.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ad_Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ad_Registro.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ad_Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ad_Registro.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ad_Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ad_Registro.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -211,33 +255,29 @@ public class Ad_Registro extends javax.swing.JFrame {
 
     public int getIDpass() {
 
-        int idUsr = 0;
-        Connection con = getConeccion();
-        PreparedStatement ps;
-        ResultSet res;
         try {
-
-            ps = con.prepareStatement("SELECT max(id_usuario) FROM tbl_usuario");
+            ps = con.prepareStatement("SELECT max(id_usuario) as UsuarioMaximo "
+                    + "FROM TBL_Usuario");
             res = ps.executeQuery();
 
             if (res.next()) {
-                idUsr = res.getInt("id_usuario");
-                usr.setContrasenia(""+idUsr);
+                idUsr = res.getInt("UsuarioMaximo");
+                //usr.setContrasenia(""+idUsr);
             }
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            System.out.println("Error: 232" + e);
         }
-
         return idUsr + 1;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel areaSet;
+    private javax.swing.JButton btnAgregarUser;
     private javax.swing.JComboBox<String> cbx_Rol;
     private javax.swing.JButton generarPass;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLID;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jtxName;
+    private javax.swing.JTextField jtxPassword;
     // End of variables declaration//GEN-END:variables
 }

@@ -24,12 +24,6 @@ public class Usuario {
         this.idArea = idArea;
     }
     
-    public Usuario(){
-        
-    }
-    
-    
-
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -78,5 +72,15 @@ public class Usuario {
     public void setIdArea(int idArea) {
         this.idArea = idArea;
     }             
+
+    public String toQuerySQL(){
+        return ""+idUsuario+", \"" + nombreUsuario+"\", \""+contrasenia+"\", "+idRol+", "+idArea;
+    }
+    
+    @Override
+    public String toString() {
+        return "Usuario{" + "\nidUsuario=" + idUsuario + ",\nnombreUsuario=" + nombreUsuario + ",\ncontrasenia=" + contrasenia 
+                + ",\n idRol=" + idRol + ",\n idArea=" + idArea + '}';
+    }
 
 }
