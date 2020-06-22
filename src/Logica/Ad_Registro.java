@@ -174,35 +174,40 @@ public class Ad_Registro extends javax.swing.JFrame {
     }
 
     private void btnAgregarUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarUserActionPerformed
-        Connection Conect = getConeccion();
-        PreparedStatement preparedStm;
-        usr = new Usuario(idUsuario, jtxPassword.getText(), jtxName.getText(), 100 + cbx_Rol.getSelectedIndex(), 401);
+        if (DataValid() || jtxPassword.getText().equals("")) {
 
-        System.out.println("SQL: " + usr.toQuerySQL());
-        String querySQLInsert = "INSERT INTO TBL_Usuario(id_usuario, nombre_usr, contrasenia, id_rol, id_area) VALUES (" + usr.toQuerySQL() + ")";
-        
-        System.out.println(querySQLInsert);
+            Connection Conect = getConeccion();
+            PreparedStatement preparedStm;
+            usr = new Usuario(idUsuario, jtxPassword.getText(), jtxName.getText(), 100 + cbx_Rol.getSelectedIndex(), 401);
 
-        try {
-            Conect.setAutoCommit(false);
-            preparedStm = Conect.prepareStatement(querySQLInsert);
-            preparedStm.executeUpdate();
+            System.out.println("SQL: " + usr.toQuerySQL());
+            String querySQLInsert = "INSERT INTO TBL_Usuario(id_usuario, nombre_usr, contrasenia, id_rol, id_area) VALUES (" + usr.toQuerySQL() + ")";
 
-            int value = JOptionPane.showConfirmDialog(this, "¿CONFIRMAS LOS DATOS?", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
-            if (value == 0) {
-                Conect.commit();
-                JOptionPane.showMessageDialog(this, "Se agrego el usuario: " + usr.getNombreUsuario() + " correctamente.");
-                idUsuario++;
-                jLID.setText("ID: " + idUsuario);                
-            } else if (value == 1) {
-                Conect.rollback();
-                JOptionPane.showMessageDialog(this, "No se agrego al usuario");
+            System.out.println(querySQLInsert);
+
+            try {
+                Conect.setAutoCommit(false);
+                preparedStm = Conect.prepareStatement(querySQLInsert);
+                preparedStm.executeUpdate();
+
+                int value = JOptionPane.showConfirmDialog(this, "¿CONFIRMAS LOS DATOS?", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+                if (value == 0) {
+                    Conect.commit();
+                    JOptionPane.showMessageDialog(this, "Se agrego el usuario: " + usr.getNombreUsuario() + " correctamente.");
+                    Administrador ex = new Administrador();
+                    ex.show();
+                    this.dispose();
+                } else if (value == 1) {
+                    Conect.rollback();
+                    JOptionPane.showMessageDialog(this, "No se agrego al usuario");
+                }
+
+            } catch (SQLException e) {
+                System.out.println("Error: " + e);
             }
-
-        } catch (SQLException e) {
-            System.out.println("Error: " + e);
+        }else{
+            JOptionPane.showMessageDialog(this, "Inserta datos antes de agregar");
         }
-
     }//GEN-LAST:event_btnAgregarUserActionPerformed
 
     private void generarPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarPassActionPerformed
