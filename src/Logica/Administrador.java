@@ -49,6 +49,11 @@ public class Administrador extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(123, 175, 77));
         jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton2.setText("REGISTRAR USUARIO");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 290, 100));
 
         jButton3.setBackground(new java.awt.Color(123, 175, 77));
@@ -66,6 +71,12 @@ public class Administrador extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Ad_Registro abrir = new Ad_Registro();
+        abrir.show();
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
