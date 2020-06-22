@@ -13,7 +13,12 @@ public class Conexion {
 
     public static final String URL = "jdbc:mysql://cafeteriatesco.cutnsruxkj7l.us-east-2.rds.amazonaws.com:3306/cafeteriatesco";
     public static final String USERNAME = "tesco_cafe";
-    public static final String PASSWORD = "CMMI_tesco";
+    public static final String PASSWORD = "CMMI_tesco";    
+    
+    
+    /*public static final String URL = "jdbc:mysql://127.0.0.1:3306/cafeteria_tsco";
+    public static final String USERNAME = "root";
+    public static final String PASSWORD = "rootroot";    */
     
   //  mysql -h cafeteriatesco.cutnsruxkj7l.us-east-2.rds.amazonaws.com -u tesco_cafe -p
     

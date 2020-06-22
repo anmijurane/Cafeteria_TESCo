@@ -5,7 +5,11 @@
  */
 package Logica;
 
+import static ConexSQL.Conexion.getConeccion;
 import java.awt.event.ItemEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import poo.Usuario;
 
@@ -16,12 +20,13 @@ import poo.Usuario;
 public class Ad_Registro extends javax.swing.JFrame {
 
     Usuario usr;
-    
+
     /**
      * Creates new form Ad_Registro
      */
     public Ad_Registro() {
         initComponents();
+        jLID.setText("ID: " +getIDpass());
     }
 
     /**
@@ -33,8 +38,8 @@ public class Ad_Registro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jLID = new javax.swing.JLabel();
+        jtxName = new javax.swing.JTextField();
         cbx_Rol = new javax.swing.JComboBox<>();
         jTextField2 = new javax.swing.JTextField();
         generarPass = new javax.swing.JButton();
@@ -44,10 +49,10 @@ public class Ad_Registro extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setText("ID: 001");
+        jLID.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLID.setText("ID: 001");
 
-        jTextField1.setText("Nombre");
+        jtxName.setText("Nombre");
 
         cbx_Rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ELIGE UN ROL", "ADMINISTRADOR", "CAJERO", "SUPERVISOR" }));
         cbx_Rol.addItemListener(new java.awt.event.ItemListener() {
@@ -59,6 +64,11 @@ public class Ad_Registro extends javax.swing.JFrame {
         jTextField2.setText("CONTRASEÑA");
 
         generarPass.setText("GENERAR CONTRASEÑA");
+        generarPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generarPassActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("ACEPTAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -76,12 +86,12 @@ public class Ad_Registro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLID, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(generarPass, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                             .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jtxName, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(262, 262, 262)
@@ -97,10 +107,10 @@ public class Ad_Registro extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLID, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbx_Rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -122,9 +132,9 @@ public class Ad_Registro extends javax.swing.JFrame {
 
     private void cbx_RolItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbx_RolItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
-            
+
             int index = cbx_Rol.getSelectedIndex();
-            
+
             switch (index) {
                 case 0:
                     JOptionPane.showMessageDialog(this, "Ingresa un Rol");
@@ -141,16 +151,28 @@ public class Ad_Registro extends javax.swing.JFrame {
                 default:
                     throw new AssertionError();
             }
-            
+
         }
     }//GEN-LAST:event_cbx_RolItemStateChanged
 
+    public boolean DataValid() {
+        if (jtxName.getText().equals("") && cbx_Rol.getSelectedIndex() == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        usr = new Usuario(
-                0, "", "", 5,2);
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void generarPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarPassActionPerformed
+        if (DataValid()) {
+            usr.setContrasenia("");
+        }
+    }//GEN-LAST:event_generarPassActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,13 +209,35 @@ public class Ad_Registro extends javax.swing.JFrame {
         });
     }
 
+    public int getIDpass() {
+
+        int idUsr = 0;
+        Connection con = getConeccion();
+        PreparedStatement ps;
+        ResultSet res;
+        try {
+
+            ps = con.prepareStatement("SELECT max(id_usuario) FROM tbl_usuario");
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                idUsr = res.getInt("id_usuario");
+                usr.setContrasenia(""+idUsr);
+            }
+
+        } catch (Exception e) {
+        }
+
+        return idUsr + 1;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel areaSet;
     private javax.swing.JComboBox<String> cbx_Rol;
     private javax.swing.JButton generarPass;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jLID;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jtxName;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,12 +16,16 @@ public class Usuario {
     private int idRol;
     private int idArea;
 
-    public Usuario(int idUsuario, String nombreUsuario, String contrasenia, int idRol, int idArea) {
+    public Usuario(int idUsuario, String contrasenia, String nombreUsuario, int idRol, int idArea) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.contrasenia = contrasenia;
         this.idRol = idRol;
         this.idArea = idArea;
+    }
+    
+    public Usuario(){
+        
     }
     
     
