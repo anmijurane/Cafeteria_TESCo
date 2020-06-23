@@ -229,28 +229,28 @@ public class Ad_Productos extends javax.swing.JFrame {
         try {
             con.setAutoCommit(false);
             prst = con.prepareStatement(query);
-            prst.executeQuery();
+            prst.executeUpdate();
             int value = JOptionPane.showConfirmDialog(this, "¿CONFIRMAS LOS DATOS? \n"
-                    + "PRODUCTO: " +prodcts.getNombreProd()
-                    +"\nPRECIO: $"+prodcts.getPrecio()
-                    +"\nCANT. BODEGA" +prodcts.getCantBodega(), "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
-            System.out.println("Valor JOption"+value);
+                    + "PRODUCTO: " + prodcts.getNombreProd()
+                    + "\nPRECIO: $" + prodcts.getPrecio()
+                    + "\nCANT. BODEGA: " + prodcts.getCantBodega(), "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+            System.out.println("Valor JOption" + value);
             if (value == 0) {
-                    con.commit();
-                    JOptionPane.showMessageDialog(this, "Se agrego el producto: " + prodcts.getNombreProd() + " correctamente.");                    
-                } else if (value == 2) {
-                    JOptionPane.showMessageDialog(this, "No se agrego el producto");
-                    con.rollback();
-                }
+                con.commit();
+                JOptionPane.showMessageDialog(this, "Se agrego el producto: " + prodcts.getNombreProd() + " correctamente.");
+            } else if (value == 2) {
+                JOptionPane.showMessageDialog(this, "No se agrego el producto");
+                con.rollback();
+            }
         } catch (SQLException e) {
-            System.out.println("Error en ScriptIntert: " +e);
+            System.out.println("Error en ScriptIntert: " + e);
         }
     }
 
     public void ScriptUpdate(String query) {
         try {
 
-        } catch (Exception e) {            
+        } catch (Exception e) {
         }
 
     }
@@ -267,8 +267,9 @@ public class Ad_Productos extends javax.swing.JFrame {
                 //Producto nuevo Insert
                 script = "INSERT INTO TBL_Producto (id_producto, nombre_prod,"
                         + "precio, cant_bodega, id_proveedor) VALUES"
-                        + "(" + prodcts.toQuerySQL() + ")";                
-
+                        + "(" + prodcts.toQuerySQL() + ")";
+                ScriptIntert(script);
+                Clear();
             } else if (!(cbxProducto.getSelectedIndex() == 0)) {
                 prodcts.setNombreProd((String) cbxProducto.getSelectedItem());
                 prodcts.setIdProvedor(cbxProveedor.getSelectedIndex());
@@ -276,6 +277,7 @@ public class Ad_Productos extends javax.swing.JFrame {
                 prodcts.setCantBodega(new Integer(jtxCantBodega.getText()));
                 //Producto ya activo Update
                 script = "UPDATE TBL_Producto SET " + prodcts.toUpdateSQL();
+
             }
 
             System.out.println(prodcts.toQuerySQL());
@@ -285,6 +287,12 @@ public class Ad_Productos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Ingresa valores validos");
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    public void Clear() {
+        jtxCantBodega.setText("");
+        jtxNuevoProducto.setText("");
+        jtxtCostoProd.setText("");
+    }
 
     /**
      * @param args the command line arguments
