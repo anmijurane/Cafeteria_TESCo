@@ -240,6 +240,7 @@ public class Ad_Productos extends javax.swing.JFrame {
             if (value == 0) {
                 con.commit();
                 JOptionPane.showMessageDialog(this, "Se agrego el producto: " + prodcts.getNombreProd() + " correctamente.");
+                Clear();
             } else if (value == 2) {
                 JOptionPane.showMessageDialog(this, "No se agrego el producto");
                 con.rollback();
@@ -254,8 +255,20 @@ public class Ad_Productos extends javax.swing.JFrame {
             con.setAutoCommit(false);
             prst = con.prepareStatement(query);
             prst.executeUpdate();
-            
+            int value = JOptionPane.showConfirmDialog(this, "¿CONFIRMAS LOS DATOS? \n"
+                    + "PRODUCTO: " + prodcts.getNombreProd(), "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+            System.out.println("Valor JOption" + value);
+            if (value == 0) {
+                con.commit();
+                JOptionPane.showMessageDialog(this, "Se agrego el producto: " + prodcts.getNombreProd() + " correctamente.");
+                Clear();
+            } else if (value == 2) {
+                JOptionPane.showMessageDialog(this, "No se agrego el producto");
+                con.rollback();
+            }
+
         } catch (SQLException e) {
+            System.out.println("Error en ScriptUpdate: " +e);
         }
 
     }
@@ -274,7 +287,7 @@ public class Ad_Productos extends javax.swing.JFrame {
                         + "precio, cant_bodega, id_proveedor) VALUES"
                         + "(" + prodcts.toQuerySQL() + ")";
                 ScriptIntert(script);
-                Clear();
+                
             } else if (!(cbxProducto.getSelectedIndex() == 0)) {
                 prodcts.setNombreProd((String) cbxProducto.getSelectedItem());
                 prodcts.setIdProvedor(cbxProveedor.getSelectedIndex());
@@ -282,6 +295,7 @@ public class Ad_Productos extends javax.swing.JFrame {
                 prodcts.setCantBodega(new Integer(jtxCantBodega.getText()));
                 //Producto ya activo Update
                 script = "UPDATE TBL_Producto SET " + prodcts.toUpdateSQL();
+                ScriptUpdate(script);
 
             }
 

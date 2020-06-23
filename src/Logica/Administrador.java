@@ -34,7 +34,7 @@ public class Administrador extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnAddProducto = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -56,10 +56,15 @@ public class Administrador extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 290, 100));
 
-        jButton3.setBackground(new java.awt.Color(123, 175, 77));
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton3.setText("AÑADIR PRODUCTOR");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 470, 290, 100));
+        btnAddProducto.setBackground(new java.awt.Color(123, 175, 77));
+        btnAddProducto.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnAddProducto.setText("AÑADIR PRODUCTOR");
+        btnAddProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddProductoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAddProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 470, 290, 100));
 
         jButton4.setBackground(new java.awt.Color(123, 175, 77));
         jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -77,6 +82,10 @@ public class Administrador extends javax.swing.JFrame {
         abrir.show();
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnAddProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductoActionPerformed
+        
+    }//GEN-LAST:event_btnAddProductoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,9 +123,9 @@ public class Administrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddProducto;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
