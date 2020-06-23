@@ -44,6 +44,11 @@ public class Administrador extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(123, 175, 77));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton1.setText("INVENTARIO");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 290, 100));
 
         jButton2.setBackground(new java.awt.Color(123, 175, 77));
@@ -84,8 +89,16 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnAddProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductoActionPerformed
-        
+        Ad_Productos acc = new Ad_Productos();
+        acc.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnAddProductoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        MostrarInventario acc = new MostrarInventario();
+        acc.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
