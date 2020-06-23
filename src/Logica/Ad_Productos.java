@@ -77,6 +77,7 @@ public class Ad_Productos extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         btnAgregar.setText("AGREGAR");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -181,6 +182,7 @@ public class Ad_Productos extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNuevoProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoProveedorActionPerformed
@@ -249,8 +251,11 @@ public class Ad_Productos extends javax.swing.JFrame {
 
     public void ScriptUpdate(String query) {
         try {
-
-        } catch (Exception e) {
+            con.setAutoCommit(false);
+            prst = con.prepareStatement(query);
+            prst.executeUpdate();
+            
+        } catch (SQLException e) {
         }
 
     }
