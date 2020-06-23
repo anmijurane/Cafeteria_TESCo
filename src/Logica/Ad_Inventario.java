@@ -61,6 +61,11 @@ public class Ad_Inventario extends javax.swing.JFrame {
         });
 
         jButton1.setText("SALIR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,6 +121,12 @@ public class Ad_Inventario extends javax.swing.JFrame {
         prov.setNombreProv(jtxNombre.getText());
         queryInsert(prov);
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Ad_Productos acc = new Ad_Productos();
+        acc.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void queryInsert(proveedor prv) {
         Connection con = getConeccion();
