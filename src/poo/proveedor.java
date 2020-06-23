@@ -28,12 +28,12 @@ public class proveedor {
         ResultSet result;
         
         try {
-        prepared = con.prepareStatement("SELECT max(id_proveedor) as UsuarioMaximo "
+        prepared = con.prepareStatement("SELECT max(id_proveedor) as idMaximo "
         + "FROM TBL_Proveedor");
         result = prepared.executeQuery();
         
         if (result.next()) {
-        idProveedor = result.getInt("UsuarioMaximo")+1;
+        idProveedor = result.getInt("idMaximo")+1;
         System.out.println("idProveedor: " +idProveedor);
         }
         } catch (SQLException e) {
