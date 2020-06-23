@@ -227,15 +227,30 @@ public class Ad_Productos extends javax.swing.JFrame {
     public void ScriptIntert(String query) {
 
         try {
-
-        } catch (Exception e) {
+            con.setAutoCommit(false);
+            prst = con.prepareStatement(query);
+            prst.executeQuery();
+            int value = JOptionPane.showConfirmDialog(this, "¿CONFIRMAS LOS DATOS? \n"
+                    + "PRODUCTO: " +prodcts.getNombreProd()
+                    +"\nPRECIO: $"+prodcts.getPrecio()
+                    +"\nCANT. BODEGA" +prodcts.getCantBodega(), "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+            System.out.println("Valor JOption"+value);
+            if (value == 0) {
+                    con.commit();
+                    JOptionPane.showMessageDialog(this, "Se agrego el producto: " + prodcts.getNombreProd() + " correctamente.");                    
+                } else if (value == 2) {
+                    JOptionPane.showMessageDialog(this, "No se agrego el producto");
+                    con.rollback();
+                }
+        } catch (SQLException e) {
+            System.out.println("Error en ScriptIntert: " +e);
         }
     }
 
     public void ScriptUpdate(String query) {
         try {
 
-        } catch (Exception e) {
+        } catch (Exception e) {            
         }
 
     }
@@ -252,7 +267,7 @@ public class Ad_Productos extends javax.swing.JFrame {
                 //Producto nuevo Insert
                 script = "INSERT INTO TBL_Producto (id_producto, nombre_prod,"
                         + "precio, cant_bodega, id_proveedor) VALUES"
-                        + "(" + prodcts.toQuerySQL() + ")";
+                        + "(" + prodcts.toQuerySQL() + ")";                
 
             } else if (!(cbxProducto.getSelectedIndex() == 0)) {
                 prodcts.setNombreProd((String) cbxProducto.getSelectedItem());
