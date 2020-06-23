@@ -213,14 +213,21 @@ public class Ad_Productos extends javax.swing.JFrame {
                 }
 
             } catch (SQLException e) {
-                System.out.println("Error en cbxProveedorItemStateChanged: " +e);
+                System.out.println("Error en cbxProveedorItemStateChanged: " + e);
             }
 
         }
     }//GEN-LAST:event_cbxProveedorItemStateChanged
 
     private void cbxProductoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxProductoItemStateChanged
-
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            if (!(cbxProducto.getSelectedIndex() == 0)) {
+                jtxNuevoProducto.setText("");
+                jtxNuevoProducto.setEnabled(false);
+            } else if (cbxProducto.getSelectedIndex() == 0) {
+                jtxNuevoProducto.setEnabled(true);
+            }
+        }
     }//GEN-LAST:event_cbxProductoItemStateChanged
 
     /**
