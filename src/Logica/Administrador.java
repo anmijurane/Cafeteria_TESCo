@@ -63,7 +63,7 @@ public class Administrador extends javax.swing.JFrame {
 
         btnAddProducto.setBackground(new java.awt.Color(123, 175, 77));
         btnAddProducto.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnAddProducto.setText("AÑADIR PRODUCTOR");
+        btnAddProducto.setText("AÑADIR PRODUCTO");
         btnAddProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddProductoActionPerformed(evt);
