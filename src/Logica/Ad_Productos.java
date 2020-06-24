@@ -76,126 +76,80 @@ public class Ad_Productos extends javax.swing.JFrame {
         jtxCantBodega = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnAgregar.setBackground(new java.awt.Color(123, 175, 77));
+        btnAgregar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnAgregar.setText("AGREGAR");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 480, 120, 40));
 
-        jLabel1.setText("Producto Existente");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/PEXIST.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, -1, -1));
+        getContentPane().add(jtxNuevoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 250, 210, 30));
 
         cbxProveedor.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbxProveedorItemStateChanged(evt);
             }
         });
+        getContentPane().add(cbxProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 180, 30));
 
-        jLabel2.setText("Proveedor");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/PRO.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
 
-        jLabel4.setText("Costo Unitario");
+        jtxtCostoProd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        getContentPane().add(jtxtCostoProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 390, 210, 30));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/COUNITARIO.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 350, -1, -1));
 
         cbxProducto.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbxProductoItemStateChanged(evt);
             }
         });
+        getContentPane().add(cbxProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 250, 30));
 
-        jLabel5.setText("Producto Nuevo");
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/PNUEVO.png"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 210, -1, -1));
 
-        btnNuevoProveedor.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        btnNuevoProveedor.setBackground(new java.awt.Color(123, 175, 77));
+        btnNuevoProveedor.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnNuevoProveedor.setText("NUEVO PROVEEDOR");
         btnNuevoProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoProveedorActionPerformed(evt);
             }
         });
+        getContentPane().add(btnNuevoProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 180, 40));
 
-        jLabel6.setText("Cant Llegada");
+        jtxCantBodega.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        getContentPane().add(jtxCantBodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 392, 210, 30));
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/CLLEGADA.png"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, -1, 40));
+
+        btnRegresar.setBackground(new java.awt.Color(123, 175, 77));
+        btnRegresar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnRegresar.setText("REGRESAR");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 645, -1, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(jLabel2)
-                        .addGap(137, 137, 137))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRegresar)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cbxProveedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnNuevoProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)))
-                        .addGap(46, 46, 46)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jtxCantBodega, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cbxProducto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jtxNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel4)
-                        .addComponent(jtxtCostoProd, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbxProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtxNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbxProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtxtCostoProd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnNuevoProveedor)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtxCantBodega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(btnAgregar)
-                        .addGap(32, 32, 32))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRegresar)
-                        .addGap(18, 18, 18))))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/PRODUCTO.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 700));
 
         pack();
         setLocationRelativeTo(null);
@@ -378,6 +332,7 @@ public class Ad_Productos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxProveedor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

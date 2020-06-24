@@ -54,92 +54,75 @@ public class Ad_Registro extends javax.swing.JFrame {
         btnAgregarUser = new javax.swing.JButton();
         areaSet = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLID.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLID.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLID.setText("ID: 001");
+        getContentPane().add(jLID, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 180, 30));
 
-        jtxName.setText("Nombre");
+        jtxName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        getContentPane().add(jtxName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 302, 240, 40));
 
+        cbx_Rol.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cbx_Rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ELIGE UN ROL", "ADMINISTRADOR", "CAJERO", "SUPERVISOR" }));
         cbx_Rol.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbx_RolItemStateChanged(evt);
             }
         });
+        getContentPane().add(cbx_Rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 302, 200, 30));
 
-        jtxPassword.setText("CONTRASEÑA");
+        jtxPassword.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        getContentPane().add(jtxPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, 240, 40));
 
+        generarPass.setBackground(new java.awt.Color(123, 175, 77));
+        generarPass.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         generarPass.setText("GENERAR CONTRASEÑA");
         generarPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generarPassActionPerformed(evt);
             }
         });
+        getContentPane().add(generarPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 510, 220, 40));
 
+        btnAgregarUser.setBackground(new java.awt.Color(123, 175, 77));
+        btnAgregarUser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnAgregarUser.setText("ACEPTAR");
         btnAgregarUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarUserActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAgregarUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 440, 120, 30));
 
+        areaSet.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         areaSet.setText("AREA:");
+        getContentPane().add(areaSet, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 382, 200, 30));
 
+        jButton1.setBackground(new java.awt.Color(123, 175, 77));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("SALIR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(887, 645, 90, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLID, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(generarPass, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                            .addComponent(jtxPassword, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtxName, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(64, 64, 64)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(areaSet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbx_Rol, 0, 140, Short.MAX_VALUE))
-                            .addComponent(btnAgregarUser, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLID, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtxName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbx_Rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtxPassword)
-                    .addComponent(areaSet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(generarPass)
-                    .addComponent(btnAgregarUser))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/Usuario.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/Contraseña.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/REGISTRO.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 700));
 
         pack();
         setLocationRelativeTo(null);
@@ -292,6 +275,9 @@ public class Ad_Registro extends javax.swing.JFrame {
     private javax.swing.JButton generarPass;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLID;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jtxName;
     private javax.swing.JTextField jtxPassword;
     // End of variables declaration//GEN-END:variables
