@@ -64,16 +64,17 @@ public class Supervisor extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 700));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MostrarInventario acc = new MostrarInventario();
+        Ad_Productos acc = new Ad_Productos();
         acc.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Ad_Productos acc = new Ad_Productos();
+        MostrarInventario acc = new MostrarInventario();
         acc.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed

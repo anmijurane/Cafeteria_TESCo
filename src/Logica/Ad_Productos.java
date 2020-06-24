@@ -278,7 +278,7 @@ public class Ad_Productos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        Administrador acc = new Administrador();
+        Supervisor acc = new Supervisor();
         acc.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
